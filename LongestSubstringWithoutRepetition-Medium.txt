@@ -1,0 +1,49 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+    StringBuilder sb=new StringBuilder();
+    int longest=0;
+	for(int i=0;i<s.length();i++)
+    {
+    sb.append(s.substring(i,i+1));
+    for(int j=i+1;j<s.length();j++)
+    {
+        if(sb.indexOf(s.substring(j,j+1))==-1)
+        {
+        sb.append(s.substring(j,j+1));
+        if(j==s.length()-1)
+        {
+        if(sb.length()>longest)
+        {
+            longest=sb.length();
+        }
+        sb.setLength(0);    
+        }
+        }
+        else
+        {
+            if(sb.length()>longest)
+            {
+                longest=sb.length();
+            }
+            sb.setLength(0);
+            break;
+        }
+    }
+        
+    }
+    if(s.length()==0)
+    {
+            return 0;
+    }
+    s=s.replaceAll(" ","");
+    if(s.length()==1)
+    {
+            return 1;
+    }
+    if(s=="")
+    {
+        return 1;
+    }
+        return longest;
+}
+}
