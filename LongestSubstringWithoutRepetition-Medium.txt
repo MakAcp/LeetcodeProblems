@@ -47,3 +47,10 @@ class Solution {
         return longest;
 }
 }
+
+
+
+Note: StringBuilder is a good option to use.
+New function learnt.
+str.setLength(0)= Erases the string;
+str.index(character) return -1 if character not found in the string
