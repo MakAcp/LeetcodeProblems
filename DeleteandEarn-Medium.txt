@@ -1,0 +1,57 @@
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        int max=0;
+        if(nums.length==1)
+        {
+            return nums[0];
+        }
+        for(int i=0;i<nums.length;i++)
+        {
+            if(nums[i]>max)
+            {
+                max=nums[i];
+            }
+        }
+        int[] frequency =new int[max+1];
+        
+        for(int i=0;i<nums.length;i++)
+        {
+            frequency[nums[i]]++ ;
+        }
+        int[] dp =new int[max+1];
+        
+        dp[1]=frequency[1];
+        dp[2]=frequency[2]*2;
+        
+        for(int i=3;i<frequency.length;i++)
+        {
+            dp[i]= frequency[i]*i + Math.max(dp[i-2],dp[i-3]);
+        }
+        for(int i=0;i<dp.length;i++)
+        {
+            System.out.println(dp[i]);
+        }
+        Arrays.sort(dp);
+        
+return dp[max];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note
+Dp logicSimilar to HouseRobber Problem
+need to build an frequency array 
