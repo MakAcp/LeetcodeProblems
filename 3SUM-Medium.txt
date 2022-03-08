@@ -38,13 +38,64 @@ class Solution {
 
 
 
-
-
-
-
-
-
-
-
 Note:  315/318 cases passed.(Time limit exceeded)
 Need to find an efficient method
+
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<Integer> minilist= new ArrayList<Integer>();
+        Arrays.sort(nums);
+        
+        for(int first=0; first<nums.length-2;first++)
+        {
+            System.out.println("Entered here");
+            int second=first+1;
+            int third=nums.length-1;
+            
+            while(second<third)
+            {
+                System.out.println(nums[first]+nums[second]+nums[third]);
+                if(nums[first]+nums[second]+nums[third]==0)
+                {
+                    minilist.add(nums[first]);
+                    minilist.add(nums[second]);
+                    minilist.add(nums[third]);
+                    List<Integer> templist=new ArrayList<>(minilist);
+                    result.add(templist);
+                    minilist.clear();
+                    third--;
+                    second++;
+                }
+                else if(nums[first]+nums[second]+nums[third] > 0)
+                {
+                    third--;
+                }
+                else
+                {
+                     System.out.println("Stuck Here");
+                    second++;
+                }
+            }
+            
+        }
+        Set<List<Integer>> hash_Set = new HashSet<>(result);
+        System.out.println(hash_Set);
+        List<List<Integer>> Final = new ArrayList<List<Integer>>(hash_Set);
+       
+         return Final;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+Update: Figured something with n squared time complexity but still 315/318 testcases
