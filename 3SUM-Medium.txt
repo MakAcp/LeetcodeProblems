@@ -1,0 +1,50 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<Integer> minilist= new ArrayList<Integer>();
+        int first;
+        int second;
+        int third;
+        for(first=0;first<nums.length-2;first++)
+        {
+           for(second=first+1;second<nums.length-1;second++)
+           {
+               for(third=second+1;third<nums.length;third++)
+               {
+                   if(nums[first]+nums[second]+nums[third]==0)
+                   {
+                       minilist.add(nums[first]);
+                       minilist.add(nums[second]);
+                       minilist.add(nums[third]);
+                        List<Integer> tempminilist= new ArrayList<>(minilist);
+                       result.add(tempminilist);
+                       minilist.clear();
+                      
+                   }
+               }
+           }
+            
+        }
+         
+        Set<List<Integer>> hash_Set = new HashSet<>(result);
+        System.out.println(hash_Set);
+        List<List<Integer>> Final = new ArrayList<List<Integer>>(hash_Set);
+       
+         return Final;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+Note:  315/318 cases passed.(Time limit exceeded)
+Need to find an efficient method
